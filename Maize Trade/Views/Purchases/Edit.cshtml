@@ -32,7 +32,11 @@
                 @Html.ValidationMessageFor(model => model.FarmerID, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-10" id="farmerDetails">
 
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.MaizeWeight, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -87,4 +91,17 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+            var url = "@Url.Action("FarmerDetails", "Purchases")";
+            $('#FarmerID').on('change', function () {
+                $.get(url,{id:this.value}, function (data) {
+                    $("#farmerDetails").html(data);
+                });
+            });
+            $(document).ready(function () {
+                $.get(url, { id: $('#FarmerID option:selected').val() }, function (data) {
+                    $("#farmerDetails").html(data);
+                });
+            })
+    </script>
 }
