@@ -11,7 +11,7 @@ namespace Maize_Trade.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Party
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,16 +19,23 @@ namespace Maize_Trade.Models
         {
             this.Sales = new HashSet<Sale>();
         }
-    
+        [Display(Name = "Party ID")]
         public int PartyID { get; set; }
+        [Display(Name = "Party Name")]
         public string Name { get; set; }
+        [Display(Name = "Address")]
         public string Address { get; set; }
+        [Display(Name = "City")]
         public string City { get; set; }
+        [Display(Name = "TIN")]
         public string TIN { get; set; }
+        [Display(Name = "Contact Number")]
         public string ContactNumber { get; set; }
+        [Display(Name = "Note")]
         public string Note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Display(Name = "Sales")]
         public virtual ICollection<Sale> Sales { get; set; }
     }
 }

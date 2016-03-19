@@ -1,0 +1,74 @@
+﻿@model Maize_Trade.Models.Purchase
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Purchase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaizeWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaizeWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaizeRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaizeRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeductionInWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeductionInWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Farmer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farmer.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PurchaseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

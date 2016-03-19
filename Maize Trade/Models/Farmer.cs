@@ -11,7 +11,7 @@ namespace Maize_Trade.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Farmer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +19,17 @@ namespace Maize_Trade.Models
         {
             this.Purchases = new HashSet<Purchase>();
         }
-    
+        [Display(Name="Farmer ID")]
         public int FarmerID { get; set; }
+        [Display(Name = "Name of the Farmer")]
         public string Name { get; set; }
+        [Display(Name = "Village of the Farmer")]
         public string Village { get; set; }
+        [Display(Name = "Contact Number")]
         public string ContactNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Display(Name = "Purchases Made")]
         public virtual ICollection<Purchase> Purchases { get; set; }
     }
 }

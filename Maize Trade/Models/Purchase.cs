@@ -11,18 +11,26 @@ namespace Maize_Trade.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Purchase
     {
+        [Display(Name = "Purchase ID")]
         public int PurchaseID { get; set; }
+        [Display(Name = "Date")]
         public Nullable<System.DateTime> Date { get; set; }
+        [Display(Name = "Farmer")]
         public int FarmerID { get; set; }
+        [Display(Name = "Maize Weight")]
         public Nullable<decimal> MaizeWeight { get; set; }
+        [Display(Name = "Current Rate")]
         public Nullable<decimal> MaizeRate { get; set; }
+        [Display(Name = "Deduction In Weight")]
         public Nullable<decimal> DeductionInWeight { get; set; }
+        [Display(Name = "Total Amount")]
         public Nullable<decimal> TotalAmount { get; set; }
+        [Display(Name = "Note")]
         public byte[] Note { get; set; }
-    
+        [Display(Name = "Farmer Details")]
         public virtual Farmer Farmer { get; set; }
     }
 }
