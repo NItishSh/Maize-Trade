@@ -29,7 +29,7 @@ namespace Maize_Trade.Models
         [Display(Name = "Total Amount")]
         public Nullable<decimal> TotalAmount { get; set; }
         [Display(Name = "Note")]
-        public byte[] Note { get; set; }
+        public string Note { get; set; }
         [Display(Name = "Farmer Details")]
         public virtual Farmer Farmer { get; set; }
     }

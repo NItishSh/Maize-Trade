@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MaizeTradeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MaizeTradeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Farmer">
           <Key>
             <PropertyRef Name="FarmerID" />
@@ -37,7 +37,7 @@
           <Property Name="MaizeRate" Type="numeric" Precision="18" Scale="2" />
           <Property Name="DeductionInWeight" Type="numeric" Precision="18" Scale="2" />
           <Property Name="TotalAmount" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Note" Type="varbinary" MaxLength="300" />
+          <Property Name="Note" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -89,8 +89,7 @@
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MaizeTradeDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -128,7 +127,7 @@
           <Property Name="MaizeRate" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="DeductionInWeight" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Note" Type="Binary" MaxLength="300" FixedLength="false" />
+          <Property Name="Note" Type="String" />
           <NavigationProperty Name="Farmer" Relationship="Self.FK_Purchase_ToFarmer" FromRole="Purchase" ToRole="Farmer" />
         </EntityType>
         <EntityType Name="Sale">

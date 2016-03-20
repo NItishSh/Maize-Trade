@@ -119,6 +119,11 @@ namespace Maize_Trade.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public PartialViewResult PartyDetails(int id)
+        {
+            var result = db.Parties.FirstOrDefault(x => x.PartyID == id);
+            return PartialView("_PartyDetails", result);
+        }
 
         protected override void Dispose(bool disposing)
         {

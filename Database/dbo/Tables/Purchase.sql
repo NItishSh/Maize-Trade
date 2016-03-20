@@ -6,7 +6,7 @@
     [MaizeRate]         NUMERIC (18, 2) NULL,
     [DeductionInWeight] NUMERIC (18, 2) NULL,
     [TotalAmount]       NUMERIC (18, 2) NULL,
-    [Note]              VARBINARY (300) NULL,
+    [Note]              VARCHAR(300) NULL,
     PRIMARY KEY CLUSTERED ([PurchaseID] ASC),
     CONSTRAINT [FK_Purchase_ToFarmer] FOREIGN KEY ([FarmerID]) REFERENCES [dbo].[Farmer] ([FarmerID])
 );

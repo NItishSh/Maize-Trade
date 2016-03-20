@@ -19,7 +19,7 @@ namespace Maize_Trade.Models
         {
             this.Purchases = new HashSet<Purchase>();
         }
-        [Display(Name="Farmer ID")]
+        [Display(Name = "Farmer ID")]
         public int FarmerID { get; set; }
         [Display(Name = "Name of the Farmer")]
         public string Name { get; set; }
