@@ -17,6 +17,7 @@ namespace Maize_Trade.Models
         [Display(Name = "Sale ID")]
         public int SaleID { get; set; }
         [Display(Name = "Date")]
+        [DataType(DataType.Date, ErrorMessage = "Date not valid.")]
         public Nullable<System.DateTime> Date { get; set; }
         [Display(Name = "Party")]
         public int PartyID { get; set; }

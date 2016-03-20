@@ -26,6 +26,7 @@ namespace Maize_Trade.Models
         [Display(Name = "Village of the Farmer")]
         public string Village { get; set; }
         [Display(Name = "Contact Number")]
+        [StringLength(maximumLength:13, ErrorMessage = "Enter a valid Contact Number",MinimumLength =10)]
         public string ContactNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

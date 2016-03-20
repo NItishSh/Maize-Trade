@@ -30,6 +30,7 @@ namespace Maize_Trade.Models
         [Display(Name = "TIN")]
         public string TIN { get; set; }
         [Display(Name = "Contact Number")]
+        [StringLength(maximumLength: 13, ErrorMessage = "Enter a valid Contact Number", MinimumLength = 10)]
         public string ContactNumber { get; set; }
         [Display(Name = "Note")]
         public string Note { get; set; }
