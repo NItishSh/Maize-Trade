@@ -34,10 +34,11 @@
             @Html.LabelFor(model => model.Farmer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10" id="farmerDetails">
             </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.MaizeWeight, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MaizeWeight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MaizeWeight, new { htmlAttributes = new { @class = "form-control", @placeholder = "Please enter weight in Kwintal." } })
                 @Html.ValidationMessageFor(model => model.MaizeWeight, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MaizeRate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MaizeRate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MaizeRate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Please enter current Rate." } })
                 @Html.ValidationMessageFor(model => model.MaizeRate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,7 +54,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DeductionInWeight, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DeductionInWeight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DeductionInWeight, new { htmlAttributes = new { @class = "form-control", @placeholder = "Please enter deduction(in kg) per Kwintal." } })
                 @Html.ValidationMessageFor(model => model.DeductionInWeight, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -79,7 +80,7 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>
+    
     </div>
 }
 
@@ -97,10 +98,28 @@
                 $("#farmerDetails").html(data);
             });
         });        
-        $(document).ready(function () {         
+        $(document).ready(function () {
             $.get(url, { id: $('#FarmerID option:selected').val() }, function (data) {
                 $("#farmerDetails").html(data);
             });
-        })
+        });
+        $("#MaizeWeight").change(CalculateTotal);
+        $("#MaizeRate").change(CalculateTotal);
+        $("#DeductionInWeight").change(CalculateTotal);
+        function CalculateTotal() {
+            try {                
+                var weightinKwintal = $("#MaizeWeight").val();
+                var rate = $("#MaizeRate").val();
+                var deductionPerKwintal = $("#DeductionInWeight").val();
+                var totaldeduction = (weightinKwintal * deductionPerKwintal) / 100;
+                weightinKwintal = weightinKwintal - totaldeduction;
+                var totalAmount = weightinKwintal * rate;
+                $("#TotalAmount").val(totalAmount);
+            }
+            catch(err){
+                //handle the error.
+                $("#TotalAmount").val("Invalid data");
+            }
+        }
     </script>
 }

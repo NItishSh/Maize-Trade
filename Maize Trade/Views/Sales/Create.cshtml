@@ -88,10 +88,28 @@
                     $("#partyDetails").html(data);
                 });
             });
-            $(document).ready(function () {
-                $.get(url, { id: $('#PartyID option:selected').val() }, function (data) {
-                    $("#partyDetails").html(data);
-                });
-            })
+        $(document).ready(function () {
+            $.get(url, { id: $('#PartyID option:selected').val() }, function (data) {
+                $("#partyDetails").html(data);
+            });
+        })
+        $("#MaizeWeight").change(CalculateTotal);
+        $("#MaizeRate").change(CalculateTotal);
+        //$("#DeductionInWeight").change(CalculateTotal);
+        function CalculateTotal() {
+            try {
+                var weightinKwintal = $("#MaizeWeight").val();
+                var rate = $("#MaizeRate").val();
+                var deductionPerKwintal = $("#DeductionInWeight").val();
+                //var totaldeduction = (weightinKwintal * deductionPerKwintal) / 100;
+                //weightinKwintal = weightinKwintal - totaldeduction;
+                var totalAmount = weightinKwintal * rate;
+                $("#TotalAmount").val(totalAmount);
+            }
+            catch (err) {
+                //handle the error.
+                $("#TotalAmount").val("Invalid data");
+            }
+        }
     </script>
 }

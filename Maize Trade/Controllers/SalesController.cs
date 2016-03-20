@@ -40,7 +40,9 @@ namespace Maize_Trade.Controllers
         public ActionResult Create()
         {
             ViewBag.PartyID = new SelectList(db.Parties, "PartyID", "Name");
-            return View();
+            Sale sale = new Sale();
+            sale.Date = DateTime.Now;
+            return View(sale);
         }
 
         // POST: Sales/Create

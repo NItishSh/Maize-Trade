@@ -40,7 +40,9 @@ namespace Maize_Trade.Controllers
         public ActionResult Create()
         {
             ViewBag.FarmerID = new SelectList(db.Farmers, "FarmerID", "Name");
-            return View();
+            Purchase purchase = new Purchase();
+            purchase.Date = DateTime.Now;
+            return View(purchase);
         }
 
         // POST: Purchases/Create
