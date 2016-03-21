@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Maize_Trade.Models.Purchase>
+
+@{
+    ViewBag.Title = "DailyPurchase";
+}
+
+<h2>Daily Purchase</h2>
+
+<input class="form-control text-box single-line" data-val="true" data-val-date="The field Date must be a date." data-val-required="The Date field is required." id="Date" name="Date" type="date" value="" />
+
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaizeWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaizeRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeductionInWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Farmer.Name)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="bodytr">
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseID)
+        </td>
+        <td class="dateColumn">
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaizeWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaizeRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeductionInWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farmer.Name)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PurchaseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PurchaseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseID })
+        </td>*@
+    </tr>
+}
+
+</table>
+@section Scripts {
+    <script type="text/javascript">
+        $("#Date").change(function () {
+            var dateSelected = this.value;
+            $(".dateColumn").each(function () {
+                if($(this).text().trim() == dateSelected){
+                    $(this).closest("tr").show();
+                }
+                else{
+                    $(this).closest("tr").hide();
+                }
+            });
+        });
+    </script>
+}

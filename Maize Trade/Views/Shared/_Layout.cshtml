@@ -28,6 +28,13 @@
                     <li>@Html.ActionLink("Farmers", "Index", "Farmers")</li>
                     <li>@Html.ActionLink("Purchases", "Index", "Purchases")</li>
                     <li>@Html.ActionLink("Sales", "Index", "Sales")</li>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales Report</a></li>
+                            <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Puchase Report</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
