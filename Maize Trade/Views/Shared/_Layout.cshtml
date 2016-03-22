@@ -31,8 +31,12 @@
                     <li class="menu-item dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales Report</a></li>
-                            <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Puchase Report</a></li>
+                            <li class="menu-item dropdown dropdown-submenu">
+                                @Html.ActionLink("Daily Purchase Report", "DailyPurchase", "Purchases")
+                            </li>
+                            <li class="menu-item dropdown dropdown-submenu">
+                                @Html.ActionLink("Monthly Purchase Report", "MonthlyPurchase", "Purchases")
+                            </li>
                         </ul>
                     </li>
                 </ul>

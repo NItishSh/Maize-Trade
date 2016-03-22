@@ -21,6 +21,12 @@ namespace Maize_Trade.Controllers
             return View(purchases.ToList());
         }
 
+        public ActionResult MonthlyPurchase()
+        {
+            var purchases = db.Purchases.Include(p => p.Farmer);
+            return View(purchases.ToList());
+        }
+
         public ActionResult DailyPurchase()
         {
             var purchases = db.Purchases.Include(p => p.Farmer);

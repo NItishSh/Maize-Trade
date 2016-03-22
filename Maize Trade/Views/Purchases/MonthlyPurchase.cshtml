@@ -1,16 +1,22 @@
 ﻿@model IEnumerable<Maize_Trade.Models.Purchase>
 
 @{
-    ViewBag.Title = "DailyPurchase";
+    ViewBag.Title = "MonthlyPurchase";
 }
 
-<h2>Daily Purchase</h2>
+<h2>Monthly Purchase</h2>
 <div class="form-horizontal">
     <div class="form-group">
-        <label class="control-label col-md-2" for="Date">Select Date</label>
+        <label class="control-label col-md-2" for="FromDate">From Date</label>
         <div class="col-md-10">
-            <input class="form-control text-box single-line inputdate" id="Date" name="Date" type="date" value="" />
-            @*<input class="form-control text-box single-line" id="Date" name="Date" type="date" value="" />*@
+            <input class="form-control text-box single-line inputdate" id="FromDate" name="FromDate" type="date" value="" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="ToDate">To Date</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line inputdate" id="ToDate" name="ToDate" type="date" value="" />
         </div>
     </div>
     <div class="form-group">
@@ -19,7 +25,6 @@
         </div>
     </div>
 </div>
-
 
 
 <table class="table">
@@ -48,12 +53,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Farmer.Name)
         </th>
-        @*<th></th>*@
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr class="bodytr">
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.PurchaseID)
             </td>
@@ -78,34 +82,46 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Farmer.Name)
             </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.PurchaseID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.PurchaseID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseID })
-                </td>*@
         </tr>
     }
 
 </table>
+
+
 @section Scripts {
     <script type="text/javascript">
         $(".btn-default").click(function () {
             window.print();
         });
-        $("#Date").change(function () {
-            var dateSelected = this.value;
-            var itemCount = 0;
-            $(".dateColumn").each(function () {
-                if ($(this).text().trim() == dateSelected) {
-                    $(this).closest("tr").show();
-                    itemCount = itemCount + 1;
+        $(".inputdate").change(function () {
+            if ($("#FromDate").val().trim()) {
+                var fromDate = new Date($("#FromDate").val());
+                //console.log("From Date : " + fromDate);
+                if ($("#ToDate").val()) {
+                    var toDate = new Date($("#ToDate").val());
+                    //console.log("To Date : " + toDate);
+                    var itemCount = 0;
+                    $(".dateColumn").each(function () {
+                        if ($(this).text().trim()) {
+                            var dateInCurrentRow = new Date($(this).text().trim());
+                            //console.log("date in row" + dateInCurrentRow);
+                            if (dateInCurrentRow >= fromDate && dateInCurrentRow <= toDate) {
+                                $(this).closest("tr").show();
+                                itemCount = itemCount + 1;
+                            }
+                            else {
+                                $(this).closest("tr").hide();
+                            }
+                        }
+                        else {
+                            $(this).closest("tr").hide();
+                        }
+
+                    });
+                    if (itemCount > 0) {
+                        $(".btn-default").show();
+                    }
                 }
-                else {
-                    $(this).closest("tr").hide();
-                }
-            });
-            if (itemCount > 0) {
-                $(".btn-default").show();
             }
         });
     </script>
