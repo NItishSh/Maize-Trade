@@ -1,22 +1,22 @@
-﻿@model IEnumerable<Maize_Trade.Models.Purchase>
+﻿@model IEnumerable<Maize_Trade.Models.Sale>
 
 @{
-    ViewBag.Title = "MonthlyPurchase";
+    ViewBag.Title = "MonthlySales";
 }
 
-<h2>Monthly Purchase</h2>
+<h2>Monthly Sales</h2>
 <div class="form-horizontal">
     <div class="form-group">
         <label class="control-label col-md-2" for="FromDate">From Date</label>
         <div class="col-md-10">
-            <input class="form-control text-box single-line inputdate" id="FromDate" name="FromDate" type="date" value="" placeholder="dd-mm-yyy"/>
+            <input class="form-control text-box single-line inputdate" id="FromDate" name="FromDate" type="date" value="" placeholder="dd-mm-yyy" />
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-md-2" for="ToDate">To Date</label>
         <div class="col-md-10">
-            <input class="form-control text-box single-line inputdate" id="ToDate" name="ToDate" type="date" value="" placeholder="dd-mm-yyy"/>
+            <input class="form-control text-box single-line inputdate" id="ToDate" name="ToDate" type="date" value="" placeholder="dd-mm-yyy" />
         </div>
     </div>
     <div class="form-group">
@@ -26,11 +26,10 @@
     </div>
 </div>
 
-
 <table class="table" style="display:none">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PurchaseID)
+            @Html.DisplayNameFor(model => model.SaleID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
@@ -42,51 +41,43 @@
             @Html.DisplayNameFor(model => model.MaizeRate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeductionInWeight)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TotalAmount)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Note)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Farmer.Name)
+            @Html.DisplayNameFor(model => model.Party.Name)
         </th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr class="bodytr">
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseID)
-            </td>
-            <td class="dateColumn">
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaizeWeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaizeRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeductionInWeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Farmer.Name)
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr class="bodytr">
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleID)
+        </td>
+        <td class="dateColumn">
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaizeWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaizeRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Party.Name)
+        </td>        
+    </tr>
+}
 
 </table>
-
 
 @section Scripts {
     <script type="text/javascript">

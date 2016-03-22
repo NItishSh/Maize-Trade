@@ -20,6 +20,17 @@ namespace Maize_Trade.Controllers
             var sales = db.Sales.Include(s => s.Party);
             return View(sales.ToList());
         }
+        public ActionResult MonthlySales()
+        {
+            var sales = db.Sales.Include(s => s.Party);
+            return View(sales.ToList());
+        }
+
+        public ActionResult DailySales()
+        {
+            var sales = db.Sales.Include(s => s.Party);
+            return View(sales.ToList());
+        }
 
         // GET: Sales/Details/5
         public ActionResult Details(int? id)

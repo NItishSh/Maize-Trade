@@ -308,6 +308,8 @@
     <Content Include="Views\Sales\_PartyDetails.cshtml" />
     <Content Include="Views\Purchases\DailyPurchase.cshtml" />
     <Content Include="Views\Purchases\MonthlyPurchase.cshtml" />
+    <Content Include="Views\Sales\DailySales.cshtml" />
+    <Content Include="Views\Sales\MonthlySales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

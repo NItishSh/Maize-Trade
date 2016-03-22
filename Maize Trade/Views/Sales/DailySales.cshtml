@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Maize_Trade.Models.Purchase>
+﻿@model IEnumerable<Maize_Trade.Models.Sale>
 
 @{
-    ViewBag.Title = "DailyPurchase";
+    ViewBag.Title = "DailySales";
 }
 
-<h2>Daily Purchase</h2>
+<h2>Daily Sales</h2>
 <div class="form-horizontal">
     <div class="form-group">
         <label class="control-label col-md-2" for="Date">Select Date</label>
@@ -20,12 +20,10 @@
     </div>
 </div>
 
-
-
 <table class="table" style="display:none">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PurchaseID)
+            @Html.DisplayNameFor(model => model.SaleID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
@@ -37,54 +35,41 @@
             @Html.DisplayNameFor(model => model.MaizeRate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeductionInWeight)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TotalAmount)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Note)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Farmer.Name)
+            @Html.DisplayNameFor(model => model.Party.Name)
         </th>
-        @*<th></th>*@
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr class="bodytr">
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseID)
-            </td>
-            <td class="dateColumn">
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaizeWeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaizeRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeductionInWeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Farmer.Name)
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.PurchaseID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.PurchaseID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseID })
-                </td>*@
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr class="bodytr">
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleID)
+        </td>
+        <td class="dateColumn">
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaizeWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaizeRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Party.Name)
+        </td>       
+    </tr>
+}
 
 </table>
 @section Scripts {
